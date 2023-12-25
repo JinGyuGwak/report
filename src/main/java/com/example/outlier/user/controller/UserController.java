@@ -1,7 +1,7 @@
 package com.example.outlier.user.controller;
 
 
-import com.example.outlier.user.data.UserDto;
+import com.example.outlier.user.dto.UserDto;
 import com.example.outlier.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,9 +16,15 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
+
+    @GetMapping("/{userEmail}")
+    public ResponseEntity<UserDto> getUserName(@PathVariable String userEmail){
+        return new ResponseEntity<>(userService.getUser(userEmail),HttpStatus.OK);
+
+    }
     @GetMapping("")
-    public List<UserDto> getUser(){
-        return userService.getUserList();
+    public ResponseEntity<List<UserDto>> getUser(){
+        return new ResponseEntity<>(userService.getUserList(),HttpStatus.OK);
     }
     @PostMapping("")
     public ResponseEntity<UserDto> insertUser(@RequestBody UserDto user){
@@ -27,5 +33,9 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable long userId){
         return new ResponseEntity<>(userService.deleteUser(userId),HttpStatus.OK);
+    }
+    @PostMapping("/login")
+    public ResponseEntity<UserDto.LoginRes> loginUser(@RequestBody UserDto.LoginDto user){
+        return new ResponseEntity<>(userService.loginUser(user),HttpStatus.OK);
     }
 }

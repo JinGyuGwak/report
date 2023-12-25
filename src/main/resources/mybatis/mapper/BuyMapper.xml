@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.outlier.buy.repository.BuyRepository">
+    <!-- 유저 ID로 Bucket 데이터 조회-->
+    <select id="selectBucketByUserId" resultMap="bucketResultMap">
+        SELECT * FROM bucket WHERE user_id = #{userId}
+    </select>
+
+    <resultMap id="bucketResultMap" type="com.example.outlier.bucket.dto.BucketDto">
+        <id property="id" column="id"/>
+        <result property="count" column="count"/>
+        <result property="userId" column="user_id"/>
+        <result property="productId" column="product_id"/>
+    </resultMap>
+
+    <!-- bucket 데이터를 buy 테이블로 이동 -->
+    <insert id="insertBuy" parameterType="com.example.outlier.bucket.dto.BucketDto">
+        INSERT INTO buy (user_id, product_id, name)
+        SELECT #{userId}, #{productId}, p.name
+        FROM product p
+        WHERE p.id = #{productId}
+    </insert>
+
+    <!-- 유저 ID로 bucket 데이터 삭제 -->
+    <delete id="deleteBucketsByUserId">
+        DELETE FROM bucket WHERE user_id = #{userId}
+    </delete>
+
+    <select id="getBuy" resultMap="getBuyResultMap">
+        SELECT * FROM buy WHERE user_id=#{userId}
+    </select>
+
+    <resultMap id="getBuyResultMap" type="com.example.outlier.buy.dto.BuyDto">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="productId" column="product_id"/>
+    </resultMap>
+
+</mapper>
+
+        <!--
+          DAO : 쿼리를 호출하는 객체
+          DTO : Response 를 담을 객체
+
+
+         -->

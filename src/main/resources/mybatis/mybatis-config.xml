@@ -3,5 +3,8 @@
 <configuration>
     <mappers>
         <mapper resource="UserMapper.xml"/>
+        <mapper resource="ProductMapper.xml"/>
+        <mapper resource="BucketMapper.xml"/>
+        <mapper resource="BuyMapper.xml"/>
     </mappers>
 </configuration>
