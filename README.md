@@ -53,3 +53,6 @@ buy(구매목록)
 <br>
 
 # API 명세서
+(유저부분을 제외한 모든 엔드포인트는 로그인 후 기능 사용 가능합니다)
+<br>
+https://impartial-python-8f4.notion.site/9595e1bc1d174c3681842e48bf22f06a?v=e6b2aa98522c40bb93a5191a5fbe677a&pvs=4
