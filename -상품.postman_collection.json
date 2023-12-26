@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "d71d3e0c-3f33-49bc-8793-8295ba9972a6",
+		"name": "\b상품",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25072328",
+		"_collection_link": "https://blue-sunset-961362.postman.co/workspace/outlier~8555918b-8355-4863-8e29-ccdd9eea89de/collection/25072328-d71d3e0c-3f33-49bc-8793-8295ba9972a6?action=share&source=collection_link&creator=25072328"
+	},
+	"item": [
+		{
+			"name": "\b상품등록",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"테스트상품3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/product",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "상품조회",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/product",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "상품명으로 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/product/테스트상품",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product",
+						"테스트상품"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "상품삭제( pathPara = 삭제할 상품ID)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/product/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "상품 정보 수정",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"바뀐상품\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/product/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

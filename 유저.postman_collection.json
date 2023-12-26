@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "3cd9dd1f-a120-4efa-9670-ea6aa921e54c",
+		"name": "유저",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25072328",
+		"_collection_link": "https://blue-sunset-961362.postman.co/workspace/outlier~8555918b-8355-4863-8e29-ccdd9eea89de/collection/25072328-3cd9dd1f-a120-4efa-9670-ea6aa921e54c?action=share&source=collection_link&creator=25072328"
+	},
+	"item": [
+		{
+			"name": "유저조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "유저 생성",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"곽진규\",\n    \"password\" : \"2695\",\n    \"email\" : \"wlsrb2695@naver.com\",\n    \"role\" : \"ROLE_USER\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "유저삭제",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserEmail 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/곽진규1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"곽진규1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();",
+							"pm.environment.set(\"jwt\", data.jwt);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"wlsrb2695@naver.com\",\n    \"password\" : \"2695\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "8887a079-d2cf-4c58-9b50-9683fec5e860",
+		"name": "구매관련",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25072328",
+		"_collection_link": "https://blue-sunset-961362.postman.co/workspace/outlier~8555918b-8355-4863-8e29-ccdd9eea89de/collection/25072328-8887a079-d2cf-4c58-9b50-9683fec5e860?action=share&source=collection_link&creator=25072328"
+	},
+	"item": [
+		{
+			"name": "장바구니 물품 구매",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/buy",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"buy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
